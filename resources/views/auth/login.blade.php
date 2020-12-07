@@ -66,6 +66,7 @@
                                 <button type="submit" class="btn btn-primary px-4">
                                     Prisijungti
                                 </button>
+                                <a href="/" class="btn btn-secondary">Grįžti atgal</a>
                             </div>
                         </div>
                     </form>
