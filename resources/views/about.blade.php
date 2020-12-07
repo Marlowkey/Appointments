@@ -41,7 +41,7 @@
                 </a>
             </li>
         </ul>
-            <button><a href="login" class="btn btn-secondary my-2 my-sm-0">Prisijungti</a></button>
+            <a href="login" class="btn btn-secondary my-2 my-sm-0">Prisijungti</a>
     </div>
     </nav>
 
