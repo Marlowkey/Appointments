@@ -18,16 +18,15 @@
         </style>
     </head>
     <body>
+
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="#">Barbershop</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
 
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Paslaugos</a>
@@ -47,8 +46,19 @@
         </ul>
             <button><a href="login" class="btn btn-secondary my-2 my-sm-0">Prisijungti</a></button>
     </div>
-</nav>
+    </nav>
 
+<div class="container">
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5">
+      <h1 class="font-weight-light">Fixed Full Page Background Image</h1>
+      <p class="lead">In this snippet, the background image is fixed to the body element. Content on the page will scroll, but the image will remain in a fixed position!</p>
+      <p class="lead">Scroll down...</p>
+      <div style="height: 700px"></div>
+      <p class="lead mb-0">You've reached the end!</p>
+    </div>
+  </div>
+</div>
 
     </body>
 </html>
