@@ -28,17 +28,17 @@
             <li class="nav-item">
                 <a class="nav-link" href="/">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="services">Paslaugos</a>
+            <li class="nav-item active">
+                <a class="nav-link" href="services">
+                    Paslaugos
+                    <span class="sr-only">(current)</span>
+                </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="employees">Darbuotojai</a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="about">
-                    Apie mus
-                    <span class="sr-only">(current)</span>
-                </a>
+            <li class="nav-item">
+                <a class="nav-link" href="about">Apie mus</a>
             </li>
         </ul>
             <button><a href="login" class="btn btn-secondary my-2 my-sm-0">Prisijungti</a></button>
