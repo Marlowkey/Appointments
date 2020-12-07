@@ -13,13 +13,23 @@ class TestAppointment extends Controller
      *
      * @return Response
      */
-    public static function index()
+    public static function serviceName()
     {
-        $appointment = DB::table('services')->pluck('price', 'name');
+        $appointment = DB::table('services')->pluck('name');
 
-        foreach ($appointment as $name => $price) {
+        foreach ($appointment as $name) {
             echo "<br>";
-            echo $price, " ", $name;
+            echo $name;
+        }
+    }
+
+    public static function servicePrice()
+    {
+        $appointment = DB::table('services')->pluck('price');
+
+        foreach ($appointment as $price) {
+            echo "<br>";
+            echo $price;
         }
     }
 }

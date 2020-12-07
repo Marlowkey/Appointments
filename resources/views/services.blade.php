@@ -1,4 +1,7 @@
-
+<?php
+      use App\Http\Controllers\Controller;
+      use App\Http\Controllers\Admin\TestAppointment;
+?>
 
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -51,16 +54,22 @@
   <div class="card border-0 shadow my-5">
     <div class="card-body p-5">
 
-      <?php
-      use App\Http\Controllers\Controller;
-      use App\Http\Controllers\Admin\TestAppointment;
+    <table style="width:100%" cellpadding="5" cellspacing="5">
+    <table>
 
-      echo TestAppointment::index();
-      ?>
+    <tr>
+    <th>Service</th>
+    <th>Price</th>
+    </tr>
+
+    <tr>
+    <td><?php echo TestAppointment::serviceName();?></td>
+    <td><?php echo TestAppointment::servicePrice();?></td>
+    </tr>
+    </table>
 
       <div style="height: 700px"></div>
       <p class="lead mb-0">You've reached the end!</p>
-
     </div>
   </div>
 </div>
