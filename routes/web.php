@@ -1,6 +1,6 @@
 <?php
 
-Route::redirect('/', '/login');
+Route::view('/', '/welcome');
 Route::redirect('/home', '/admin');
 Auth::routes(['register' => false]);
 
