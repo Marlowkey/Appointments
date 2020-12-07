@@ -6,6 +6,14 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('/employees', function () {
+    return view('employees');
+});
+
+Route::get('/services', function () {
+    return view('services');
+});
+
 Route::redirect('/home', '/admin');
 Auth::routes(['register' => true]);
 
