@@ -26,11 +26,8 @@
 
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">
-                    Home
-                    <span class="sr-only">(current)</span>
-                </a>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Paslaugos</a>
@@ -41,8 +38,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Kainos</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="about">Apie mus</a>
+            <li class="nav-item active">
+                <a class="nav-link" href="about">
+                    Apie mus
+                    <span class="sr-only">(current)</span>
+                </a>
             </li>
         </ul>
             <button><a href="login" class="btn btn-secondary my-2 my-sm-0">Prisijungti</a></button>
