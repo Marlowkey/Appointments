@@ -30,13 +30,10 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Paslaugos</a>
+                <a class="nav-link" href="services">Paslaugos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Darbuotojai</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Kainos</a>
+                <a class="nav-link" href="employees">Darbuotojai</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="about">Apie mus</a>
