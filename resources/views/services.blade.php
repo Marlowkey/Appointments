@@ -73,8 +73,8 @@
                    </tbody>
                  </table>
                </div>
-      <div style="height: 700px"></div>
-      <p class="lead mb-0">You've reached the end!</p>
+        <?php include 'gallery.php';?>
+      <div style="height: 200px"></div>
     </div>
   </div>
 </div>
