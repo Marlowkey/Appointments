@@ -13,6 +13,7 @@ use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Auth;
 
 class EmployeesController extends Controller
 {
@@ -24,63 +25,68 @@ class EmployeesController extends Controller
             $query = Employee::with(['services'])->select(sprintf('%s.*', (new Employee)->table));
             $table = Datatables::of($query);
 
-            $table->addColumn('placeholder', '&nbsp;');
-            $table->addColumn('actions', '&nbsp;');
+                $table->addColumn('placeholder', '&nbsp;');
+                $table->addColumn('actions', '&nbsp;');
 
-            $table->editColumn('actions', function ($row) {
-                $viewGate      = 'employee_show';
-                $editGate      = 'employee_edit';
-                $deleteGate    = 'employee_delete';
-                $crudRoutePart = 'employees';
+                $table->editColumn('actions', function ($row) {
+                    $viewGate      = 'employee_show';
+                    $editGate      = 'employee_edit';
+                    $deleteGate    = 'employee_delete';
+                    $crudRoutePart = 'employees';
 
-                return view('partials.datatablesActions', compact(
-                    'viewGate',
-                    'editGate',
-                    'deleteGate',
-                    'crudRoutePart',
-                    'row'
-                ));
-            });
+                    return view('partials.datatablesActions', compact(
+                        'viewGate',
+                        'editGate',
+                        'deleteGate',
+                        'crudRoutePart',
+                        'row'
+                    ));
+                });
 
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : "";
-            });
-            $table->editColumn('name', function ($row) {
-                return $row->name ? $row->name : "";
-            });
-            $table->editColumn('email', function ($row) {
-                return $row->email ? $row->email : "";
-            });
-            $table->editColumn('phone', function ($row) {
-                return $row->phone ? $row->phone : "";
-            });
-            $table->editColumn('photo', function ($row) {
-                if ($photo = $row->photo) {
-                    return sprintf(
-                        '<a href="%s" target="_blank"><img src="%s" width="50px" height="50px"></a>',
-                        $photo->url,
-                        $photo->thumbnail
-                    );
-                }
+                $table->editColumn('id', function ($row) {
+                    return $row->id ? $row->id : "";
+                });
+                $table->editColumn('name', function ($row) {
+                    return $row->name ? $row->name : "";
+                });
+                $table->editColumn('email', function ($row) {
+                    return $row->email ? $row->email : "";
+                });
+                $table->editColumn('phone', function ($row) {
+                    return $row->phone ? $row->phone : "";
+                });
+                $table->editColumn('photo', function ($row) {
+                    if ($photo = $row->photo) {
+                        return sprintf(
+                            '<a href="%s" target="_blank"><img src="%s" width="50px" height="50px"></a>',
+                            $photo->url,
+                            $photo->thumbnail
+                        );
+                    }
 
-                return '';
-            });
-            $table->editColumn('services', function ($row) {
-                $labels = [];
+                    return '';
+                });
+                $table->editColumn('services', function ($row) {
+                    $labels = [];
 
-                foreach ($row->services as $service) {
-                    $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $service->name);
-                }
+                    foreach ($row->services as $service) {
+                        $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $service->name);
+                    }
 
-                return implode(' ', $labels);
-            });
+                    return implode(' ', $labels);
+                });
 
-            $table->rawColumns(['actions', 'placeholder', 'photo', 'services']);
+                $table->rawColumns(['actions', 'placeholder', 'photo', 'services']);
 
-            return $table->make(true);
-        }
+                return $table->make(true);
+            }
 
         return view('admin.employees.index');
+    }
+
+    public function showAll() {
+        $employees = Employee::all();
+        return view('employees', ['employees' => $employees]);
     }
 
     public function create()

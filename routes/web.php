@@ -6,9 +6,7 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/employees', function () {
-    return view('employees');
-});
+Route::get('employees', 'Admin\EmployeesController@showAll');
 
 Route::get('/services', function () {
     return view('services');

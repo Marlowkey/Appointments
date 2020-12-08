@@ -48,9 +48,10 @@
 <div class="container">
   <div class="card border-0 shadow my-5">
     <div class="card-body p-5">
-      <h1 class="font-weight-light">Geriausias būdas rezervuoti paslaugas internetu!</h1>
-      <p class="lead">In this snippet, the background image is fixed to the body element. Content on the page will scroll, but the image will remain in a fixed position!</p>
-      <p class="lead">Scroll down...</p>
+      <h1 class="font-weight-light">Mūsų darbuotojai!</h1>
+        @foreach($employees as $employee)
+            {{$employee->name}}
+        @endforeach
       <div style="height: 700px"></div>
       <p class="lead mb-0">You've reached the end!</p>
     </div>
