@@ -49,9 +49,20 @@
   <div class="card border-0 shadow my-5">
     <div class="card-body p-5">
       <h1 class="font-weight-light">Geriausias būdas rezervuoti paslaugas internetu!</h1>
-      <p class="lead">In this snippet, the background image is fixed to the body element. Content on the page will scroll, but the image will remain in a fixed position!</p>
-      <p class="lead">Scroll down...</p>
-      <div style="height: 700px"></div>
+      <p class="lead">Esame geriausi savo srities specialistai, siūlome Jums kokybiškas grožio paslaugas už prieinamą kainą!</p>
+      <p>Darbo laikas:</p>
+      <ul>
+          <li><b><u>Pirmadienis:</b></u> 08:00 - 17:00</li>
+          <li><b><u>Antradienis:</b></u> 08:00 - 17:00</li>
+          <li><b><u>Trečiadienis:</b></u> 07:00 - 16:00</li>
+          <li><b><u>Ketvirtadienis:</b></u> 08:00 - 17:00</li>
+          <li><b><u>Penktadienis:</b></u> 09:00 - 18:00</li>
+      </ul>
+      <p class="lead">Mus galite rasti čia:</p>
+      <p class="lead">
+      <?php include 'map.html';?>
+      </p>
+      <div style="height: 150px"></div>
     </div>
   </div>
 </div>
