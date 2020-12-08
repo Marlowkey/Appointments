@@ -56,6 +56,11 @@ class ServicesController extends Controller
         return view('admin.services.index');
     }
 
+    public function showAll() {
+        $services = Service::all();
+        return view('services', ['services' => $services]);
+    }
+
     public function create()
     {
         abort_if(Gate::denies('service_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');

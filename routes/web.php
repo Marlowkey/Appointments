@@ -8,9 +8,8 @@ Route::get('/about', function () {
 
 Route::get('employees', 'Admin\EmployeesController@showAll');
 
-Route::get('/services', function () {
-    return view('services');
-});
+Route::get('services', 'Admin\ServicesController@showAll');
+
 
 Route::redirect('/home', '/admin');
 Auth::routes(['register' => true]);

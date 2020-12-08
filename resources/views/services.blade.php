@@ -50,24 +50,29 @@
     </div>
     </nav>
 
-<div class="container">
+    <div class="container">
   <div class="card border-0 shadow my-5">
     <div class="card-body p-5">
-
-    <table style="width:100%" cellpadding="5" cellspacing="5">
-    <table>
-
-    <tr>
-    <th>Service</th>
-    <th>Price</th>
-    </tr>
-
-    <tr>
-    <td><?php echo TestAppointment::serviceName();?></td>
-    <td><?php echo TestAppointment::servicePrice();?></td>
-    </tr>
-    </table>
-
+      <h1 class="font-weight-light">Mūsų siūlomos paslaugos:</h1>
+        <div class="card-body table-responsive">
+                 <table class="table table-hover">
+                   <thead class="text-warning">
+                     <tr>
+                     <th>Eil. nr</th>
+                     <th>Pavadinimas</th>
+                     <th>Kaina</th>
+                   </tr></thead>
+                   <tbody>
+                    @foreach($services as $service)
+                        <tr>
+                            <td>{{ $service->id }}</td>
+                            <td>{{ $service->name }}</td>
+                            <td>{{ $service->price }}</td>
+                        </tr>
+                    @endforeach
+                   </tbody>
+                 </table>
+               </div>
       <div style="height: 700px"></div>
       <p class="lead mb-0">You've reached the end!</p>
     </div>
