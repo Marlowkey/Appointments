@@ -49,9 +49,30 @@
   <div class="card border-0 shadow my-5">
     <div class="card-body p-5">
       <h1 class="font-weight-light">Mūsų darbuotojai!</h1>
-        @foreach($employees as $employee)
-            {{$employee->name}}
-        @endforeach
+        <div class="card-body table-responsive">
+                 <table class="table table-hover">
+                   <thead class="text-warning">
+                     <tr>
+                     <th>Vardas</th>
+                     <th>El. paštas</th>
+                     <th>Nuotrauka</th>
+                     <th>Paslaugos</th>
+                   </tr></thead>
+                   <tbody>
+                    @foreach($employees as $employee)
+                        <tr>
+                            <td>{{ $employee->name }}</td>
+                            <td>{{ $employee->email }}</td>
+                            <td>{{ $employee->photo }}</td>
+                            <td>@foreach($employee->services as $service)
+                            Paslauga: {{ $service->name }}, Kaina: {{ $service->price }}<br>
+                            @endforeach
+                            </td>
+                        </tr>
+                    @endforeach
+                   </tbody>
+                 </table>
+               </div>
       <div style="height: 700px"></div>
       <p class="lead mb-0">You've reached the end!</p>
     </div>
@@ -60,3 +81,6 @@
 
     </body>
 </html>
+
+
+
