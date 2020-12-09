@@ -19,6 +19,8 @@
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <img src="https://i.ibb.co/Nrt3RWL/Logo.png" width="50" height="30">
+
     <a class="navbar-brand" href="#">Barbershop</a>
 
     <div class="collapse navbar-collapse" id="navbarColor01">
