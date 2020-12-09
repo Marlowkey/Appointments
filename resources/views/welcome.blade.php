@@ -50,8 +50,6 @@
 
 <div class="container">
   <div class="card border-0 shadow my-5">
-        <div class="card-body table-responsive">
-               </div>
       <div style="height: 15px"></div>
       <p style="text-align:center">Sveiki atvykę!</p>
       <p style="text-align:center">Džiaugiamės, kad pasirinkote mus!</p>
