@@ -6,6 +6,13 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('success', function () {
+    return view('success');
+})->name('success');
+
+Route::post('createAppointment', 'ReservationsController@createAppointment');
+Route::get('reservations', 'ReservationsController@show');
+
 Route::get('employees', 'Admin\EmployeesController@showAll');
 
 Route::get('services', 'Admin\ServicesController@showAll');

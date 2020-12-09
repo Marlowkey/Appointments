@@ -45,6 +45,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="about">Apie mus</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="reservations">Rezervuotis</a>
+            </li>
         </ul>
             <a href="login" class="btn btn-secondary my-2 my-sm-0">Prisijungti</a>
     </div>

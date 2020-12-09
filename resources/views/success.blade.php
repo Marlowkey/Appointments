@@ -13,7 +13,7 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
 
         <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet"
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         </style>
     </head>
@@ -34,26 +34,24 @@
             <li class="nav-item">
                 <a class="nav-link" href="employees">Darbuotojai</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="about">Apie mus</a>
+            </li>
             <li class="nav-item active">
-                <a class="nav-link" href="about">
-                    Apie mus
+                <a class="nav-link" href="reservations">
+                    Rezervuotis
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="reservations">Rezervuotis</a>
-            </li>
-
         </ul>
             <a href="login" class="btn btn-secondary my-2 my-sm-0">Prisijungti</a>
     </div>
     </nav>
-
-<div class="container">
+    <div class="container">
   <div class="card border-0 shadow my-5">
     <div class="card-body p-5">
-      <h1 class="font-weight-light">Geriausias būdas rezervuoti paslaugas internetu!</h1>
-      <p class="lead">Esame geriausi savo srities specialistai, siūlome Jums kokybiškas grožio paslaugas už prieinamą kainą!</p>
+      <h1 class="font-weight-light">Rezervacija sėkmingai sukurta!</h1>
+      <p class="lead">Lauksime jūsų atvykstant.</p>
       <p>Darbo laikas:</p>
       <ul>
           <li><b><u>Pirmadienis:</b></u> 08:00 - 17:00</li>
