@@ -21,6 +21,7 @@
 
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <img src="https://i.ibb.co/Nrt3RWL/Logo.png" width="50" height="30">
     <a class="navbar-brand" href="#">Barbershop</a>
 
     <div class="collapse navbar-collapse" id="navbarColor01">
@@ -44,7 +45,7 @@
                 </a>
             </li>
         </ul>
-            <a href="login" class="btn btn-secondary my-2 my-sm-0">Prisijungti</a>
+            <a href="login" class="btn btn-danger my-2 my-sm-0">Prisijungti</a>
     </div>
     </nav>
     <div class="container">

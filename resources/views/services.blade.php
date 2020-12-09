@@ -1,8 +1,3 @@
-<?php
-      use App\Http\Controllers\Controller;
-      use App\Http\Controllers\Admin\TestAppointment;
-?>
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -26,6 +21,7 @@
 
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <img src="https://i.ibb.co/Nrt3RWL/Logo.png" width="50" height="30">
     <a class="navbar-brand" href="#">Barbershop</a>
 
     <div class="collapse navbar-collapse" id="navbarColor01">
@@ -49,7 +45,7 @@
                 <a class="nav-link" href="reservations">Rezervuotis</a>
             </li>
         </ul>
-            <a href="login" class="btn btn-secondary my-2 my-sm-0">Prisijungti</a>
+            <a href="login" class="btn btn-danger my-2 my-sm-0">Prisijungti</a>
     </div>
     </nav>
 
