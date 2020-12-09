@@ -70,9 +70,19 @@
     <div class="form-group">
       <label for="exampleSelect1">Pasirinkite darbuotoją pas kurį norite apsilankyti (nebūtina)</label>
       <select class="form-control" name="employee">
-        <option>Pasirinkite darbuotoją</option>
+        <option value="{{ $employees->first()->id }}">Pasirinkite darbuotoją</option>
         @foreach($employees as $employee)
             <option value="{{ $employee->id }}"> {{ $employee->name }} </option>
+        @endforeach
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleSelect1">Pasirinkite norimą paslaugą</label>
+      <select class="form-control" name="services">
+        <option value = "{{ $services->first()->id }}">Pasirinkite paslaugą</option>
+        @foreach($services as $service)
+            <option value="{{ $service->id }}"> {{ $service->name }} </option>
         @endforeach
       </select>
     </div>

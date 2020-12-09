@@ -40,9 +40,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="about">Apie mus</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="reservations">Rezervuotis</a>
-            </li>
         </ul>
             <a href="login" class="btn btn-secondary my-2 my-sm-0">Prisijungti</a>
     </div>
@@ -68,7 +65,7 @@
                             <td>{{ $employee->email }}</td>
                             <td>{{ $employee->photo }}</td>
                             <td>@foreach($employee->services as $service)
-                            Paslauga: {{ $service->name }}, Kaina: {{ $service->price }}<br>
+                            Paslauga: {{ $service->name }} Kaina: {{ $service->price }}<br>
                             @endforeach
                             </td>
                         </tr>

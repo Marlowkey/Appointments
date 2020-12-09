@@ -18,6 +18,12 @@ class ReservationsController extends Controller
     }
 
     public function createAppointment(Request $request) {
+        $request->validate([
+            'name'    =>  'required',
+            'email'    =>  'required',
+            'phoneNumber' => 'required',
+            'services' => 'required'
+        ]);
         $name = $request->input('name');
         $email = $request->input('email');
         $phoneNumber = $request->input('phoneNumber');
@@ -30,10 +36,10 @@ class ReservationsController extends Controller
 
         $appointment = new Appointment();
         $appointment->client_id = $client->id;
+
         $employee_id = $request->input('employee');
-        if(is_int($employee_id)) {
-            $appointment->employee_id = $employee_id;
-        }
+
+        $appointment->employee_id = $employee_id;
         $start_time = $request->input('start_time');
         $date = Carbon::parse($start_time)->format('Y-m-d H:i');
         $appointment->start_time = $date;
@@ -41,6 +47,9 @@ class ReservationsController extends Controller
         $appointment->finish_time = $finish_time;
         $appointment->comments = $request->input('comments');
         $appointment->save();
+        if($request->input('services') != "Pasirinkite paslaugą") {
+            $appointment->services()->sync($request->input('services', []));
+        }
 
         return redirect()->route('success');
     }
