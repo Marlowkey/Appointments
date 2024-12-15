@@ -60,7 +60,6 @@
                                 <p class="lead fw-normal text-black-50 mb-4">Your premium barber experience, now easier to book!</p>
                                 <div class="d-grid gap-1 d-sm-flex justify-content-sm-center justify-content-xl-start">
                                     <a class="btn btn-dark btn-lg px-4 me-sm-3" href="reservations">Book reservation</a>
-                                    <a class="btn btn-outline-light btn-lg px-4" href="about">Abouts</a>
                                 </div>
                             </div>
                         </div>
