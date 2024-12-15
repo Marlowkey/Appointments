@@ -57,36 +57,45 @@
 @section('scripts')
     @parent
     <script>
-        $(function () {
+        $(function() {
             let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 
             @can('appointment_delete')
-            let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
-            let deleteButton = {
-                text: deleteButtonTrans,
-                url: "{{ route('admin.appointments.massDestroy') }}",
-                className: 'btn-danger',
-                action: function (e, dt, node, config) {
-                    var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
-                        return entry.id;
-                    });
+                let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
+                let deleteButton = {
+                    text: deleteButtonTrans,
+                    url: "{{ route('admin.appointments.massDestroy') }}",
+                    className: 'btn-danger',
+                    action: function(e, dt, node, config) {
+                        var ids = $.map(dt.rows({
+                            selected: true
+                        }).data(), function(entry) {
+                            return entry.id;
+                        });
 
-                    if (ids.length === 0) {
-                        alert('{{ trans('global.datatables.zero_selected') }}');
-                        return;
-                    }
+                        if (ids.length === 0) {
+                            alert('{{ trans('global.datatables.zero_selected') }}');
+                            return;
+                        }
 
-                    if (confirm('{{ trans('global.areYouSure') }}')) {
-                        $.ajax({
-                            headers: { 'x-csrf-token': _token },
-                            method: 'POST',
-                            url: config.url,
-                            data: { ids: ids, _method: 'DELETE' }
-                        }).done(function () { location.reload(); });
+                        if (confirm('{{ trans('global.areYouSure') }}')) {
+                            $.ajax({
+                                headers: {
+                                    'x-csrf-token': _token
+                                },
+                                method: 'POST',
+                                url: config.url,
+                                data: {
+                                    ids: ids,
+                                    _method: 'DELETE'
+                                }
+                            }).done(function() {
+                                location.reload();
+                            });
+                        }
                     }
                 }
-            }
-            dtButtons.push(deleteButton)
+                dtButtons.push(deleteButton)
             @endcan
 
             let dtOverrideGlobals = {
@@ -96,15 +105,27 @@
                 retrieve: true,
                 aaSorting: [],
                 ajax: "{{ route('admin.appointments.index') }}",
-                columns: [
-                    { data: 'placeholder', name: 'placeholder', orderable: false, searchable: false },
-                    { data: 'id', name: 'id', orderable: false },
-                    { data: 'client_name', name: 'client.name', orderable: false },
+                columns: [{
+                        data: 'placeholder',
+                        name: 'placeholder',
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: 'id',
+                        name: 'id',
+                        orderable: false
+                    },
+                    {
+                        data: 'client_name',
+                        name: 'client.name',
+                        orderable: false
+                    },
                     {
                         data: 'start_time',
                         name: 'start_time',
                         orderable: false,
-                        render: function (data) {
+                        render: function(data) {
                             return new Date(data).toLocaleString('en-US', {
                                 year: 'numeric',
                                 month: 'short',
@@ -118,7 +139,7 @@
                         data: 'finish_time',
                         name: 'finish_time',
                         orderable: false,
-                        render: function (data) {
+                        render: function(data) {
                             return new Date(data).toLocaleString('en-US', {
                                 year: 'numeric',
                                 month: 'short',
@@ -128,10 +149,34 @@
                             });
                         }
                     },
-                    { data: 'price', name: 'price', orderable: false },
-                    { data: 'comments', name: 'comments', orderable: false },
-                    { data: 'services', name: 'services.name', orderable: false },
-                    { data: 'actions', name: '{{ trans('global.actions') }}', orderable: false, searchable: false }
+                    {
+                        data: 'price',
+                        name: 'price',
+                        orderable: false,
+                        render: function(data, type, row) {
+                            // Check if the price is null or undefined
+                            if (data === null || data === undefined) {
+                                return 'N/A'; // Display N/A if the price is null
+                            }
+                            // Otherwise, display the price with the peso sign
+                            return '₱' + data;
+                        }
+                    }, {
+                        data: 'comments',
+                        name: 'comments',
+                        orderable: false
+                    },
+                    {
+                        data: 'services',
+                        name: 'services.name',
+                        orderable: false
+                    },
+                    {
+                        data: 'actions',
+                        name: '{{ trans('global.actions') }}',
+                        orderable: false,
+                        searchable: false
+                    }
                 ],
                 pageLength: 100,
                 paging: true,
@@ -146,11 +191,10 @@
 
             $('.datatable-Appointment').DataTable(dtOverrideGlobals);
 
-            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
                 $($.fn.dataTable.tables(true)).DataTable()
                     .columns.adjust();
             });
         });
     </script>
-
 @endsection
