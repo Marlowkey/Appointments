@@ -20,7 +20,7 @@
     </style>
 </head>
 
-<body class="bg-light text-light">
+<body class="bg-dark text-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-black">
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center" href="#">

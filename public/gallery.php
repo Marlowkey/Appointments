@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <style>
 body {
   font-family: Arial;
   margin: 0;
+
 }
 
 * {
@@ -13,13 +16,19 @@ body {
 
 img {
   vertical-align: middle;
+
 }
 
 /* Position the image container (needed to position the left and right arrows) */
 .container {
-  position: relative;
-}
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 30px;
 
+}
 /* Hide the images by default */
 .mySlides {
   display: none;
@@ -98,10 +107,7 @@ img {
   opacity: 1;
 }
 </style>
-<body>
-
-<h2 style="text-align:center">Paslaugų galerija</h2>
-
+<body >
 <div class="container">
   <div class="mySlides">
     <div class="numbertext">1 / 6</div>
@@ -133,12 +139,6 @@ img {
     <img src="placeholder.jpg" width="984" height="600">
   </div>
 
-  <a class="prev" onclick="plusSlides(-1)">❮</a>
-  <a class="next" onclick="plusSlides(1)">❯</a>
-
-  <div class="caption-container">
-    <p id="caption"></p>
-  </div>
 
   <div class="row">
     <div class="column">

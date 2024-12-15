@@ -22,10 +22,10 @@
     <div class="container-fluid min-vh-100 d-flex justify-content-center align-items-center">
         <div class="row w-100">
             <div class="col-md-8 col-lg-8 mx-auto">
-                <div class="card shadow-lg border">
+                <div class="card shadow-lg border rounded-3">
                     <div class="row no-gutters">
                         <!-- Left Section: Image -->
-                        <div class="bg-white col-md-6 d-flex justify-content-center align-items-center bg-light">
+                        <div class=" rounded-3 bg-white col-md-6 d-flex justify-content-center align-items-center bg-light">
                             <img src="{{ asset('logo-3.png') }}" alt="Login Image" class="img-fluid" />
                         </div>
 

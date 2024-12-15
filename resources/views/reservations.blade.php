@@ -15,12 +15,11 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     </style>
 </head>
 
-<body class="bg-light text-light">
+<body class="bg-dark text-dark">
     <nav class="navbar navbar-expand-lg navbar-dark bg-black">
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center" href="#">
@@ -51,78 +50,81 @@
     </nav>
     <form action="{{ url('createAppointment') }}" method="post">
         @csrf
-        <div class="container">
-            <div class="card border-0 shadow-sm my-5 bg-white">
-                <div class="card-body p-5">
-                    <h1 class="font-weight-light text-center mb-4 text-dark">Fill out the form, and we look forward to seeing you at your chosen time!</h1>
-
-                    <!-- Name Input -->
-                    <div class="form-group mb-3">
-                        <label for="name" class="text-dark">Your Name</label>
-                        <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Your Name">
+        <!-- Contact form -->
+        <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+            <div class="text-center mb-5">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                    <i class="bi bi-calendar-check"></i>
+                </div>
+                <h1 class="fw-bolder">Schedule Your Appointment</h1>
+                <p class="lead fw-normal text-muted mb-0">Fill out the form, and we'll confirm your appointment at your chosen time!</p>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6">
+                    <!-- Name input -->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="name" type="text" name="name" placeholder="Enter your name..." required />
+                        <label for="name">Full name</label>
+                        <div class="invalid-feedback">A name is required.</div>
                     </div>
 
-                    <!-- Email Input -->
-                    <div class="form-group mb-3">
-                        <label for="email" class="text-dark">Email</label>
-                        <input type="email" class="form-control form-control-lg" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter your email">
-                        <small id="emailHelp" class="form-text text-muted">We will not share your personal information with anyone.</small>
+                    <!-- Email address input -->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="email" type="email" name="email" placeholder="name@example.com" required />
+                        <label for="email">Email address</label>
+                        <div class="invalid-feedback">An email is required.</div>
+                        <div class="invalid-feedback">Email is not valid.</div>
                     </div>
 
-                    <!-- Phone Number Input -->
-                    <div class="form-group mb-3">
-                        <label for="phoneNumber" class="text-dark">Phone Number</label>
-                        <input type="text" class="form-control form-control-lg" id="phoneNumber" name="phoneNumber" placeholder="+370">
+                    <!-- Phone number input -->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="phoneNumber" type="tel" name="phoneNumber" placeholder="(123) 456-7890" required />
+                        <label for="phoneNumber">Phone number</label>
+                        <div class="invalid-feedback">A phone number is required.</div>
                     </div>
 
-                    <!-- Employee Select -->
-                    <div class="form-group mb-3">
-                        <label for="employee" class="text-dark">Select the employee you'd like to visit (optional)</label>
-                        <select class="form-control form-control-lg" name="employee" id="employee">
-                            <option value="">Select an employee</option>
-                            @foreach ($employees as $employee)
-                                <option value="{{ $employee->id }}"> {{ $employee->name }} </option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <!-- Service Select -->
-                    <div class="form-group mb-3">
-                        <label for="services" class="text-dark">Select the desired service</label>
-                        <select class="form-control form-control-lg" name="services" id="services">
+                    <!-- Service select -->
+                    <div class="form-floating mb-3">
+                        <select class="form-control" name="services" id="services" required>
                             <option value="">Select a service</option>
                             @foreach ($services as $service)
-                                <option value="{{ $service->id }}"> {{ $service->name }} </option>
+                                <option value="{{ $service->id }}">{{ $service->name }}</option>
                             @endforeach
                         </select>
+                        <label for="services">Select Service</label>
                     </div>
 
-                    <!-- Reservation Time -->
-                    <div class="form-group mb-3">
-                        <label for="start_time" class="text-dark">Reservation Time</label>
-                        <input type="datetime-local" class="form-control form-control-lg" id="start_time" name="start_time">
+                    <!-- Reservation time input -->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="start_time" type="datetime-local" name="start_time" required />
+                        <label for="start_time">Reservation Time</label>
                     </div>
 
-                    <!-- Comments Textarea -->
-                    <div class="form-group mb-4">
-                        <label for="comments" class="text-dark">Additional Comments (optional)</label>
-                        <textarea class="form-control form-control-lg" id="comments" rows="3" name="comments"></textarea>
+                    <!-- Additional comments -->
+                    <div class="form-floating mb-4">
+                        <textarea class="form-control" id="comments" name="comments" placeholder="Enter additional comments..." style="height: 10rem"></textarea>
+                        <label for="comments">Additional Comments (optional)</label>
                     </div>
 
                     <!-- Submit Button -->
-                    <button type="submit" class="btn btn-outline-primary btn-lg btn-block">Reserve</button>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-dark btn-lg">Reserve Your Appointment</button>
+                    </div>
                 </div>
             </div>
         </div>
     </form>
 
-    <div style="height: 150px"></div>
-    </div>
-    </div>
-    </div>
-
-
-
+    <footer class="bg-dark py-4 mt-auto">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Your Website 2023</div></div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
 </body>
-
 </html>
