@@ -13,9 +13,8 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
 
         <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet"
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-        </style>
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -32,28 +31,28 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="services">Paslaugos</a>
+                <a class="nav-link" href="services">Services</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="employees">Darbuotojai</a>
+                <a class="nav-link" href="employees">Employees</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="about">Apie mus</a>
+                <a class="nav-link" href="about">About Us</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="reservations">Rezervuotis</a>
+                <a class="nav-link" href="reservations">Make a Reservation</a>
             </li>
         </ul>
-            <a href="login" class="btn btn-danger my-2 my-sm-0">Prisijungti</a>
+            <a href="login" class="btn btn-danger my-2 my-sm-0">Login</a>
     </div>
 </nav>
 
 <div class="container">
   <div class="card border-0 shadow my-5">
       <div style="height: 15px"></div>
-      <p style="text-align:center">Sveiki atvykę!</p>
-      <p style="text-align:center">Džiaugiamės, kad pasirinkote mus!</p>
-      <p style="text-align:center">Pasirinkite Jus dominančią paslaugas esančias aukščiau</p>
+      <p style="text-align:center">Welcome!</p>
+      <p style="text-align:center">We are delighted you chose us!</p>
+      <p style="text-align:center">Select the service that interests you from the options above</p>
     </div>
   </div>
 </div>
