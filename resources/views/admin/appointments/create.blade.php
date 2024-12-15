@@ -22,7 +22,7 @@
                     </em>
                 @endif
             </div>
-            <div class="form-group {{ $errors->has('employee_id') ? 'has-error' : '' }}">
+            {{-- <div class="form-group {{ $errors->has('employee_id') ? 'has-error' : '' }}">
                 <label for="employee">{{ trans('cruds.appointment.fields.employee') }}</label>
                 <select name="employee_id" id="employee" class="form-control select2">
                     @foreach($employees as $id => $employee)
@@ -34,7 +34,7 @@
                         {{ $errors->first('employee_id') }}
                     </em>
                 @endif
-            </div>
+            </div> --}}
             <div class="form-group {{ $errors->has('start_time') ? 'has-error' : '' }}">
                 <label for="start_time">{{ trans('cruds.appointment.fields.start_time') }}*</label>
                 <input type="text" id="start_time" name="start_time" class="form-control datetime" value="{{ old('start_time', isset($appointment) ? $appointment->start_time : '') }}" required>

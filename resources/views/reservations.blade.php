@@ -27,6 +27,7 @@
             <span class="ms-2 font-weight-bold fs-4">Johnsen The Barber</span>
         </a>
 
+
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav ms-auto me-3"> <!-- 'ms-auto' to push items to the right, 'me-3' for margin -->

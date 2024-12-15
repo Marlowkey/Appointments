@@ -25,8 +25,9 @@
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center" href="#">
             <img src="{{ asset('logo-1.png') }}" class="img-fluid" style="width: 90px; height: auto;" alt="Logo">
-            <span class="ms-2 font-weight-bold fs-4">Johnsen The Barber</span>
+            <span class="ms-2 font-weight-bolder fs-4">Johnsen The Barber</span>
         </a>
+
 
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="navbarColor01">

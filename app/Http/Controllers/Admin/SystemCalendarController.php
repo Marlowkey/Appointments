@@ -18,12 +18,14 @@ class SystemCalendarController extends Controller
             if (!$appointment->start_time) {
                 continue;
             }
-
-            $events[] = [
-                'title' => $appointment->client->name . ' ('.$appointment->employee->name.')',
-                'start' => $appointment->start_time,
-                'url'   => route('admin.appointments.edit', $appointment->id),
-            ];
+            $events = [];
+            foreach ($appointments as $appointment) {
+                $events[] = [
+                    'title' => optional($appointment->client)->name,
+                    'start' => $appointment->start_time,
+                    'url'   => route('admin.appointments.edit', $appointment->id),
+                ];
+            }
         }
 
         return view('admin.calendar.calendar', compact('events'));

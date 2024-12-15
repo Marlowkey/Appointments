@@ -26,14 +26,14 @@
                             {{ $appointment->client->name ?? '' }}
                         </td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <th>
                             {{ trans('cruds.appointment.fields.employee') }}
                         </th>
                         <td>
                             {{ $appointment->employee->name ?? '' }}
                         </td>
-                    </tr>
+                    </tr> --}}
                     <tr>
                         <th>
                             {{ trans('cruds.appointment.fields.start_time') }}

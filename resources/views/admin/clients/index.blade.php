@@ -48,61 +48,68 @@
 @parent
 <script>
     $(function () {
-  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('client_delete')
-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
-  let deleteButton = {
-    text: deleteButtonTrans,
-    url: "{{ route('admin.clients.massDestroy') }}",
-    className: 'btn-danger',
-    action: function (e, dt, node, config) {
-      var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
-          return entry.id
-      });
+        let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 
-      if (ids.length === 0) {
-        alert('{{ trans('global.datatables.zero_selected') }}')
+        @can('client_delete')
+        let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
+        let deleteButton = {
+            text: deleteButtonTrans,
+            url: "{{ route('admin.clients.massDestroy') }}",
+            className: 'btn-danger',
+            action: function (e, dt, node, config) {
+                var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
+                    return entry.id;
+                });
 
-        return
-      }
+                if (ids.length === 0) {
+                    alert('{{ trans('global.datatables.zero_selected') }}');
+                    return;
+                }
 
-      if (confirm('{{ trans('global.areYouSure') }}')) {
-        $.ajax({
-          headers: {'x-csrf-token': _token},
-          method: 'POST',
-          url: config.url,
-          data: { ids: ids, _method: 'DELETE' }})
-          .done(function () { location.reload() })
-      }
-    }
-  }
-  dtButtons.push(deleteButton)
-@endcan
+                if (confirm('{{ trans('global.areYouSure') }}')) {
+                    $.ajax({
+                        headers: { 'x-csrf-token': _token },
+                        method: 'POST',
+                        url: config.url,
+                        data: { ids: ids, _method: 'DELETE' }
+                    }).done(function () { location.reload(); });
+                }
+            }
+        }
+        dtButtons.push(deleteButton)
+        @endcan
 
-  let dtOverrideGlobals = {
-    buttons: dtButtons,
-    processing: true,
-    serverSide: true,
-    retrieve: true,
-    aaSorting: [],
-    ajax: "{{ route('admin.clients.index') }}",
-    columns: [
-      { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
-{ data: 'name', name: 'name' },
-{ data: 'phone', name: 'phone' },
-{ data: 'email', name: 'email' },
-{ data: 'actions', name: '{{ trans('global.actions') }}' }
-    ],
-    order: [[ 1, 'desc' ]],
-    pageLength: 100,
-  };
-  $('.datatable-Client').DataTable(dtOverrideGlobals);
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
-        $($.fn.dataTable.tables(true)).DataTable()
-            .columns.adjust();
+        let dtOverrideGlobals = {
+            buttons: dtButtons,
+            processing: true,
+            serverSide: true,
+            retrieve: true,
+            aaSorting: false, // Disable sorting
+            ajax: "{{ route('admin.clients.index') }}",
+            columns: [
+                { data: 'placeholder', name: 'placeholder', orderable: false, searchable: false },
+                { data: 'id', name: 'id', orderable: false },
+                { data: 'name', name: 'name', orderable: false },
+                { data: 'phone', name: 'phone', orderable: false },
+                { data: 'email', name: 'email', orderable: false },
+                { data: 'actions', name: '{{ trans('global.actions') }}', orderable: false, searchable: false }
+            ],
+            pageLength: 100, // Show 100 entries per page
+            paging: true,
+            info: true,
+            language: {
+                lengthMenu: "", // Hides "Show X entries" dropdown
+                info: "", // Removes "Showing X entries" text
+                infoFiltered: "", // Removes "filtered from X total entries"
+                infoEmpty: "" // Removes "No entries to show" text
+            }
+        };
+
+        $('.datatable-Client').DataTable(dtOverrideGlobals);
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            $($.fn.dataTable.tables(true)).DataTable()
+                .columns.adjust();
+        });
     });
-});
-
 </script>
 @endsection
