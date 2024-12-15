@@ -9,7 +9,8 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -19,27 +20,22 @@
     </style>
 </head>
 
-<body>
+<body class="bg-light text-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="{{ asset('logo-1.png') }}" class="img-fluid" style="width: 90px; height: auto;" alt="Logo">
+            <span class="ms-2 font-weight-bold fs-4">Johnsen The Barber</span>
+        </a>
 
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <img src="https://i.ibb.co/Nrt3RWL/Logo.png" width="50" height="30">
-
-        <a class="navbar-brand" href="#">Barbershop</a>
-
+        <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav ms-auto me-3"> <!-- 'ms-auto' to push items to the right, 'me-3' for margin -->
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">
-                        Home
-                        <span class="sr-only">(current)</span>
-                    </a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="services">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="employees">Employees</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about">About Us</a>
@@ -47,62 +43,77 @@
                 <li class="nav-item">
                     <a class="nav-link" href="reservations">Make a Reservation</a>
                 </li>
+                <li class="nav-item">
+                    <a href="login" class="nav-link">Login</a>
+                </li>
             </ul>
-            <a href="login" class="btn btn-danger my-2 my-sm-0">Login</a>
         </div>
     </nav>
     <form action="{{ url('createAppointment') }}" method="post">
         @csrf
         <div class="container">
-            <div class="card border-0 shadow my-5">
+            <div class="card border-0 shadow-sm my-5 bg-white">
                 <div class="card-body p-5">
-                    <h1 class="font-weight-light">Fill out the form, and we look forward to seeing you at your chosen time!</h1>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Your Name</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" name="name"
-                            placeholder="Name">
+                    <h1 class="font-weight-light text-center mb-4 text-dark">Fill out the form, and we look forward to seeing you at your chosen time!</h1>
+
+                    <!-- Name Input -->
+                    <div class="form-group mb-3">
+                        <label for="name" class="text-dark">Your Name</label>
+                        <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Your Name">
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" name="email"
-                            aria-describedby="emailHelp" placeholder="Enter your email">
+
+                    <!-- Email Input -->
+                    <div class="form-group mb-3">
+                        <label for="email" class="text-dark">Email</label>
+                        <input type="email" class="form-control form-control-lg" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter your email">
                         <small id="emailHelp" class="form-text text-muted">We will not share your personal information with anyone.</small>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Phone Number</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" name="phoneNumber"
-                            placeholder="+370">
+
+                    <!-- Phone Number Input -->
+                    <div class="form-group mb-3">
+                        <label for="phoneNumber" class="text-dark">Phone Number</label>
+                        <input type="text" class="form-control form-control-lg" id="phoneNumber" name="phoneNumber" placeholder="+370">
                     </div>
-                    <div class="form-group">
-                        <label for="exampleSelect1">Select the employee you'd like to visit (optional)</label>
-                        <select class="form-control" name="employee">
-                            <option value="{{ $employees->first()->id }}">Select an employee</option>
+
+                    <!-- Employee Select -->
+                    <div class="form-group mb-3">
+                        <label for="employee" class="text-dark">Select the employee you'd like to visit (optional)</label>
+                        <select class="form-control form-control-lg" name="employee" id="employee">
+                            <option value="">Select an employee</option>
                             @foreach ($employees as $employee)
                                 <option value="{{ $employee->id }}"> {{ $employee->name }} </option>
                             @endforeach
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label for="exampleSelect1">Select the desired service</label>
-                        <select class="form-control" name="services">
-                            <option value="{{ $services->first()->id }}">Select a service</option>
+                    <!-- Service Select -->
+                    <div class="form-group mb-3">
+                        <label for="services" class="text-dark">Select the desired service</label>
+                        <select class="form-control form-control-lg" name="services" id="services">
+                            <option value="">Select a service</option>
                             @foreach ($services as $service)
                                 <option value="{{ $service->id }}"> {{ $service->name }} </option>
                             @endforeach
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label for="birthdaytime">Reservation Time</label>
-                        <input type="datetime-local" id="birthdaytime" name="start_time">
+                    <!-- Reservation Time -->
+                    <div class="form-group mb-3">
+                        <label for="start_time" class="text-dark">Reservation Time</label>
+                        <input type="datetime-local" class="form-control form-control-lg" id="start_time" name="start_time">
                     </div>
 
-                    <div class="form-group">
-                        <label for="exampleTextarea">Additional Comments (optional)</label>
-                        <textarea class="form-control" id="exampleTextarea" rows="3" name="comments"></textarea>
+                    <!-- Comments Textarea -->
+                    <div class="form-group mb-4">
+                        <label for="comments" class="text-dark">Additional Comments (optional)</label>
+                        <textarea class="form-control form-control-lg" id="comments" rows="3" name="comments"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Reserve</button>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-outline-primary btn-lg btn-block">Reserve</button>
+                </div>
+            </div>
+        </div>
     </form>
 
     <div style="height: 150px"></div>

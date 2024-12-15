@@ -65,7 +65,6 @@ section {
 }
 
 body {
-    background: url('https://i.ibb.co/Nrt3RWL/Logo.png') no-repeat center center fixed;
     margin: 0;
   font-family: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 1rem;
@@ -73,7 +72,7 @@ body {
   line-height: 1.5;
   color: #ebebeb;
   text-align: left;
-  background-color: #2b3e50;
+  background-color: #121111;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
