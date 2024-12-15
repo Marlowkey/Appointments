@@ -19,35 +19,8 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body class="bg-white text-black">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
-        <!-- Logo -->
-        <a class="navbar-brand d-flex align-items-center" href="#">
-            <img src="{{ asset('logo-1.png') }}" class="img-fluid" style="width: 90px; height: auto;" alt="Logo">
-            <span class="ms-2 font-weight-bold fs-4">Johnsen The Barber</span>
-        </a>
-
-        <!-- Navbar links -->
-        <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav ms-auto me-3"> <!-- 'ms-auto' to push items to the right, 'me-3' for margin -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="services">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="about">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="reservations">Make a Reservation</a>
-                </li>
-                <li class="nav-item">
-                    <a href="login" class="nav-link">Login</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+<body class="bg-light  text-black">
+    @include('partials.navbar')
 
         <main class="flex-shrink-0">
             <!-- Header-->
@@ -72,7 +45,7 @@
         <footer class="bg-dark py-4 mt-auto">
             <div class="container px-5">
                 <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Your Website 2023</div></div>
+                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Johnsen The Barber 2024</div></div>
                 </div>
             </div>
         </footer>
