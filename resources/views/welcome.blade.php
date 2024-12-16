@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Laravel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -19,40 +20,37 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body class="bg-light  text-black">
+<body class="bg-black  text-black">
     @include('partials.navbar')
 
-        <main class="flex-shrink-0">
-            <!-- Header-->
-            <header class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
-                <div class="container px-5">
-                    <div class="row gx-5 align-items-center justify-content-center">
-                        <div class="col-lg-8 col-xl-7 col-xxl-6">
-                            <div class="my-5 text-center text-xl-start">
-                                <h1 class="display-5 fw-bolder text-black mb-2">Johnsen The Barber</h1>
-                                <p class="lead fw-normal text-black-50 mb-4">Your premium barber experience, now easier to book!</p>
-                                <div class="d-grid gap-1 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                                    <a class="btn btn-dark btn-lg px-4 me-sm-3" href="reservations">Book reservation</a>
-                                </div>
-                            </div>
+    <main class="flex-shrink-0 min-h-screen flex items-center rounded-xl">  <!-- Soft, rounded edges for the entire main container -->
+        <!-- Header -->
+        <header class="bg-gray-100 rounded-xl py-10 px-6 mb-10 h-auto shadow-lg">  <!-- Soft rounded edges and subtle shadow for the header -->
+            <div class="container mx-auto px-6 lg:px-10 rounded-xl">
+                <div class="flex flex-col-reverse lg:flex-row items-center justify-between gap-8">
+                    <!-- Text Content -->
+                    <div class="lg:w-2/5 text-center lg:text-left">
+                        <h1 class="text-4xl font-extrabold text-black mb-4">Johnsen The Barber</h1>
+                        <p class="text-lg font-normal text-gray-600 mb-6">
+                            Your premium barber experience, now easier to book!
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-3 sm:justify-center lg:justify-center">
+                            <a href="reservations"
+                               class="px-6 py-3 bg-black text-white rounded-lg text-lg font-semibold hover:bg-gray-800 transition">
+                                Book Reservation
+                            </a>
                         </div>
-                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="{{ asset('hero.jpg') }}"alt="..." /></div>
+                    </div>
+
+                    <!-- Image Content -->
+                    <div class="lg:w-3/5">
+                        <img class="rounded-xl shadow-lg" src="{{ asset('hero.jpg') }}" alt="Johnsen The Barber" />
                     </div>
                 </div>
-            </header>
-        </main>
-        <!-- Footer-->
-        <footer class="bg-dark py-4 mt-auto">
-            <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Johnsen The Barber 2024</div></div>
-                </div>
             </div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        </header>
+    </main>
+
     </body>
 </body>
 
