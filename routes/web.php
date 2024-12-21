@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClientAuthController;
 use App\Http\Controllers\ClientHomeController;
+use App\Http\Controllers\Admin\PaymentMethodController;
 
 Route::view('/', '/welcome');
 
@@ -56,6 +57,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('appointments', 'AppointmentsController');
 
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
+    Route::get('payment-method', [PaymentMethodController::class, 'showForm'])->name('home');
+    Route::post('payment-method/upload', [PaymentMethodController::class, 'uploadQRCode'])->name('paymentMethod.uploadQRCode');
 });
 
 
@@ -66,4 +69,8 @@ Route::middleware(['auth:client'])->group(function () {
     Route::get('/client/home', [ClientHomeController::class, 'index'])->name('client.home');
     Route::get('/client/appointments/{id}/edit', [ClientHomeController::class, 'edit'])->name('client.appointments.edit');
     Route::put('/client/appointments/{id}', [ClientHomeController::class, 'update'])->name('client.appointments.update');
+    Route::get('appointments/create', [ClientHomeController::class, 'create'])->name('client.appointments.create');
+    Route::post('appointments', [ClientHomeController::class, 'createAppointment'])->name('client.appointments.store');
+    Route::delete('appointments/{appointment}', [ClientHomeController::class, 'destroy'])->name('client.appointments.destroy');
+
 });

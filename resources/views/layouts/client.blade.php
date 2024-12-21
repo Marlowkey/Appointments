@@ -35,8 +35,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand">
-            <span class="navbar-brand-full" style="color: black; font-weight: bold;">Admin</span>
-            <span class="navbar-brand-minimized" style="color: black; font-weight: bold;">Admin</span>
+            <span class="navbar-brand-full" style="color: black; font-weight: bold;">Client</span>
+            <span class="navbar-brand-minimized" style="color: black; font-weight: bold;">Client</span>
 
         </a>
         <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">

@@ -28,6 +28,7 @@ class ReservationsController extends Controller
             'services' => 'required'
         ]);
 
+        // Create a new client
         $client = new Client();
         $client->name = $request->input('name');
         $client->email = $request->input('email');
@@ -35,18 +36,28 @@ class ReservationsController extends Controller
         $client->password = Hash::make($request->input('password')); // Hash password
         $client->save();
 
+        // Create a new appointment
         $appointment = new Appointment();
         $appointment->client_id = $client->id;
         $appointment->employee_id = $request->input('employee');
         $appointment->start_time = Carbon::parse($request->input('start_time'))->format('Y-m-d H:i');
         $appointment->finish_time = Carbon::parse($appointment->start_time)->addMinutes(30)->format('Y-m-d H:i');
         $appointment->comments = $request->input('comments');
+
+        // Calculate the total price based on selected services
+        $totalPrice = Service::whereIn('id', $request->input('services'))->sum('price');
+        $appointment->price = $totalPrice; // Set the total price
+
+        // Save the appointment
         $appointment->save();
 
+        // Sync selected services with the appointment
         if ($request->input('services') != "Pasirinkite paslaugą") {
             $appointment->services()->sync($request->input('services', []));
         }
 
+        // Redirect to success page
         return redirect()->route('success');
     }
+
 }

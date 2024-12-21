@@ -53,7 +53,7 @@ class AppointmentsController extends Controller
             });
 
             $table->editColumn('price', function ($row) {
-                return $row->price ? $row->price : "";
+                return $row->price ? $row->price : " N/A";
             });
             $table->editColumn('comments', function ($row) {
                 return $row->comments ? $row->comments : "";
