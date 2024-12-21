@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -14,7 +13,7 @@ return [
     */
 
     'defaults' => [
-        'guard'     => 'web',
+        'guard' => 'web',
         'passwords' => 'users',
     ],
 
@@ -37,14 +36,18 @@ return [
 
     'guards' => [
         'web' => [
-            'driver'   => 'session',
+            'driver' => 'session',
             'provider' => 'users',
         ],
 
         'api' => [
-            'driver'   => 'passport',
+            'driver' => 'passport',
             'provider' => 'users',
-            'hash'     => false,
+            'hash' => false,
+        ],
+        'client' => [
+            'driver' => 'session',
+            'provider' => 'clients', // Adjust based on the actual path of your Client model
         ],
     ],
 
@@ -68,9 +71,13 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model'  => App\User::class,
+            'model' => App\User::class,
         ],
 
+        'clients' => [
+            'driver' => 'eloquent',
+            'model' => App\Client::class, // Make sure this is your Client model
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -95,9 +102,8 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table'    => 'password_resets',
-            'expire'   => 60,
+            'table' => 'password_resets',
+            'expire' => 60,
         ],
     ],
-
 ];

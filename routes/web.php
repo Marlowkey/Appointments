@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ClientAuthController;
+use App\Http\Controllers\ClientHomeController;
+
 Route::view('/', '/welcome');
 
 Route::get('/about', function () {
@@ -53,4 +56,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('appointments', 'AppointmentsController');
 
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
+});
+
+
+Route::get('client/login', [ClientAuthController::class, 'showLoginForm'])->name('client.login');
+Route::post('client/login', [ClientAuthController::class, 'login'])->name('client.login.submit');
+Route::post('client/logout', [ClientAuthController::class, 'logout'])->name('client.logout');
+Route::middleware(['auth:client'])->group(function () {
+    Route::get('/client/home', [ClientHomeController::class, 'index'])->name('client.home');
+    Route::get('/client/appointments/{id}/edit', [ClientHomeController::class, 'edit'])->name('client.appointments.edit');
+    Route::put('/client/appointments/{id}', [ClientHomeController::class, 'update'])->name('client.appointments.update');
 });

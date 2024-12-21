@@ -2,13 +2,15 @@
 
 namespace App;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 
-class Client extends Model
+class Client extends Authenticatable
 {
-    use SoftDeletes, HasFactory;
+    use SoftDeletes, HasFactory, Notifiable;
 
     public $table = 'clients';
 
@@ -22,6 +24,7 @@ class Client extends Model
         'name',
         'phone',
         'email',
+        'password',
         'created_at',
         'updated_at',
         'deleted_at',

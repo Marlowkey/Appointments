@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Appointment;
 use App\Client;
-use App\Employee;
 use App\Service;
+use App\Employee;
 use Carbon\Carbon;
+use App\Appointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ReservationsController extends Controller
 {
@@ -17,37 +18,32 @@ class ReservationsController extends Controller
         return view('reservations', ['employees' => $employees, 'services' => $services]);
     }
 
-    public function createAppointment(Request $request) {
+    public function createAppointment(Request $request)
+    {
         $request->validate([
             'name'    =>  'required',
-            'email'    =>  'required',
+            'email'    =>  'required|email|unique:clients,email',
             'phoneNumber' => 'required',
+            'password' => 'required|min:8', // Add password validation
             'services' => 'required'
         ]);
-        $name = $request->input('name');
-        $email = $request->input('email');
-        $phoneNumber = $request->input('phoneNumber');
 
         $client = new Client();
-        $client->name = $name;
-        $client->email = $email;
-        $client->phone = $phoneNumber;
+        $client->name = $request->input('name');
+        $client->email = $request->input('email');
+        $client->phone = $request->input('phoneNumber');
+        $client->password = Hash::make($request->input('password')); // Hash password
         $client->save();
 
         $appointment = new Appointment();
         $appointment->client_id = $client->id;
-
-        $employee_id = $request->input('employee');
-
-        $appointment->employee_id = $employee_id;
-        $start_time = $request->input('start_time');
-        $date = Carbon::parse($start_time)->format('Y-m-d H:i');
-        $appointment->start_time = $date;
-        $finish_time = Carbon::parse($date)->addMinutes(30)->format('Y-m-d H:i');
-        $appointment->finish_time = $finish_time;
+        $appointment->employee_id = $request->input('employee');
+        $appointment->start_time = Carbon::parse($request->input('start_time'))->format('Y-m-d H:i');
+        $appointment->finish_time = Carbon::parse($appointment->start_time)->addMinutes(30)->format('Y-m-d H:i');
         $appointment->comments = $request->input('comments');
         $appointment->save();
-        if($request->input('services') != "Pasirinkite paslaugą") {
+
+        if ($request->input('services') != "Pasirinkite paslaugą") {
             $appointment->services()->sync($request->input('services', []));
         }
 

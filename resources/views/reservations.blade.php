@@ -61,29 +61,42 @@
                         <div class="invalid-feedback">A phone number is required.</div>
                     </div>
 
-                    <!-- Service select -->
+
+                    <!-- Password input -->
                     <div class="form-floating mb-3">
-                        <select class="form-control" name="services" id="services" required>
-                            <option value="">Select a service</option>
-                            @foreach ($services as $service)
-                                <option value="{{ $service->id }}">{{ $service->name }}</option>
-                            @endforeach
-                        </select>
-                        <label for="services">Select Service</label>
+                        <input class="form-control" id="password" type="password" name="password" placeholder="Enter your password..." required />
+                        <label for="password">Password</label>
+                        <div class="invalid-feedback">A password is required.</div>
+                    </div>
+                    <!-- Password divider -->
+                    <div class="text-center my-4">
+                        <hr class="w-50 mx-auto text-muted">
+                        <span class="bg-light px-3 text-muted">Account Details</span>
                     </div>
 
-                    <!-- Reservation time input -->
-                    <div class="form-floating mb-3">
-                        <input class="form-control" id="start_time" type="datetime-local" name="start_time" required />
-                        <label for="start_time">Reservation Time</label>
-                    </div>
+                   <!-- Service select -->
+                   <div class="form-floating mb-3">
+                    <select class="form-control" name="services" id="services" required>
+                        <option value="">Select a service</option>
+                        @foreach ($services as $service)
+                            <option value="{{ $service->id }}">{{ $service->name }}</option>
+                        @endforeach
+                    </select>
+                    <label for="services">Select Service</label>
+                </div>
 
-                    <!-- Additional comments -->
-                    <div class="form-floating mb-4">
-                        <textarea class="form-control" id="comments" name="comments" placeholder="Enter additional comments..."
-                            style="height: 10rem"></textarea>
-                        <label for="comments">Additional Comments (optional)</label>
-                    </div>
+                <!-- Reservation time input -->
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="start_time" type="datetime-local" name="start_time" required />
+                    <label for="start_time">Reservation Time</label>
+                </div>
+
+                <!-- Additional comments -->
+                <div class="form-floating mb-4">
+                    <textarea class="form-control" id="comments" name="comments" placeholder="Enter additional comments..."
+                        style="height: 10rem"></textarea>
+                    <label for="comments">Additional Comments (optional)</label>
+                </div>
 
                     <!-- Submit Button -->
                     <div class="flex justify-center">
